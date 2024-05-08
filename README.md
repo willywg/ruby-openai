@@ -608,6 +608,7 @@ client.files.content(id: "file-123")
 client.files.delete(id: "file-123")
 ```
 
+<<<<<<< HEAD
 #### For assistant purposes
 
 You can send a file path:
@@ -626,6 +627,21 @@ client.files.upload(parameters: { file: my_file, purpose: "assistants" })
 
 See supported file types on [API documentation](https://platform.openai.com/docs/assistants/tools/file-search/supported-files).
 
+=======
+To get file content without parsing the response to JSON (usually when you use the assistants API), use:
+
+```ruby
+client.files.content(id: "file-123", parse_response: false)
+```
+
+And then you can save the file to disk:
+
+```ruby
+response = client.files.content(id: "file-123", parse_response: false)
+File.write("path/to/image.png", response)
+```
+
+>>>>>>> fix_files_content
 ### Finetunes
 
 Upload your fine-tuning data in a `.jsonl` file as above and get its ID:
